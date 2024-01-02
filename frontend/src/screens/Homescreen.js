@@ -10,7 +10,8 @@ import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/paginate';
 import ProductCarousel from '../components/ProductCarousel';
 
-const Homescreen = () => {
+
+const Homescreen = () => { 
   // const [products, setProducts] = useState([]);
    const { pageNumber, keyword } = useParams();
    const {data, isLoading, error} = useGetProductsQuery({ keyword, pageNumber});
