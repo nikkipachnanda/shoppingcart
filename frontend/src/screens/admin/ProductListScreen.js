@@ -63,7 +63,8 @@ const createProductHandler = async () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.error}</Message>
+        <Message variant='danger'>{error?.data?.message || error.error} <div> Data not found  </div></Message>
+        
       ) : (
         
           <Table striped bordered hover responsive className='table-sm'>
