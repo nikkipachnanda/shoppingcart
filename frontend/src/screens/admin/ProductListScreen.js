@@ -16,6 +16,8 @@ const ProductListScreen = () => {
 
   const {data, isLoading, error, refetch } = useGetProductsQuery({pageNumber});  
 
+  console.log("products data" + JSON.stringify(data));
+
   const [createProduct, {isLoading:loadingCreate}] = useCreateProductMutation();  
 
   const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation();
