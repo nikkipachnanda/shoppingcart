@@ -51,7 +51,7 @@ const createProductHandler = async () => {
     <div className='mrgnAuto'>
          <Row className='align-items-center'>
         <Col>
-          <h1>Products Detail</h1>
+          <h1>Products </h1>
         </Col>
         <Col className='text-end'>
           <Button className='my-3' onClick={createProductHandler}>
