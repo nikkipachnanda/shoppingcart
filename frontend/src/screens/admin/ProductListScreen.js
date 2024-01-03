@@ -63,7 +63,7 @@ const createProductHandler = async () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.error} <div> Data not found  </div></Message>
+        <Message variant='danger'>{error?.data?.message || error.error} </Message>
         
       ) : (
         
