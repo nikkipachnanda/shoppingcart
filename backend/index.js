@@ -70,4 +70,4 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.get('/api/config/paypal', (req, res) => res.send({clientId:process.env.PAYPAL_CLIENT_ID}))
 
-app.listen(port,()=> console.log(`Server running on port ${port}`));
+app.listen(PORT,()=> console.log(`Server running on port ${PORT}`));
