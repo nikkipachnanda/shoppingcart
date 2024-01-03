@@ -15,13 +15,15 @@ dotenv.config();
 connectDb();
 
 //const express  = require('express');
-
-const PORT = 5000;
+//const PORT = 5000;
+const PORT = process.env.PORT;
 
 const app = express();
 
 //var cors = require('cors');
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: 'https://shoppingcart-rqu9.onrender.com' }));
+
 
 //body parser
 app.use(express.json());
