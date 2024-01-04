@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
-import Jwt  from "jsonwebtoken";
 
-
-const userSchema = new mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -23,58 +21,16 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
-    
-       
-    tokens: [{
-      token: { type: String,
-        required: true,}
-    }],
-    
   },
   {
     timestamps: true,
-  },
- 
+  }
 );
 
 // Match user entered password to hashed password in database
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-
-userSchema.methods.generateToken = async function() 
-{
-
-  try {
-    let token = Jwt.sign({_id:this._id}, process.env.JWT_SECRET);
-
-    this.tokens = this.tokens.concat({token:token});
-
-   await this.save();
-
-   return token;
-
-  }
-   catch (error) 
-  {
-    console.log(error);  
-  }
-}
-
-  // try {
-  //   return Jwt.sign({
-  //     userId:this._id.toString(),
-  //     email:this.email,
-  //     isAdmin:this.isAdmin,
-  //   },
-  //   process.env.JWT_SECRET 
-  //   ) 
-  // }
-  // catch (error) 
-  // {
-  //   console.log(error);  
-  // }
-//}
 
 // Encrypt password using bcrypt
 userSchema.pre('save', async function (next) {
